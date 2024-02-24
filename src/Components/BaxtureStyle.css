@@ -1,0 +1,24 @@
+.cardTable {
+    width: 500px;
+    border-radius: 10px;
+    margin-bottom: 40px;
+    padding-bottom: 5vh;
+    border-width: 2px;
+    border-color: rgb(226, 222, 230);
+    border-style: solid;
+
+}
+
+.followbtnchange {
+    background-color: rgb(126, 126, 191);
+    color: white;
+    border-radius: 0px;
+    border-style: none;
+}
+
+.unFollowbtnchange {
+    background-color: white;
+    border-width: 1px;
+    border-color: black;
+    border-style: solid;
+}
