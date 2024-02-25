@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import BaxtureList from './Components/BaxtureList';
 import reportWebVitals from './reportWebVitals';
+import App from './App';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <BaxtureList /> 
+  <App /> 
 );
 
 // If you want to start measuring performance in your app, pass a function

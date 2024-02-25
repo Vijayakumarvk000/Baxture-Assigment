@@ -6,6 +6,7 @@ import { MdAlternateEmail } from "react-icons/md";
 import { TbWorld } from "react-icons/tb";
 import { SlUserFollow } from "react-icons/sl";
 import { SlUserUnfollow } from "react-icons/sl";
+import { CiStar } from "react-icons/ci";
 
 const ProfileNextTab = (props) => {
 
@@ -13,43 +14,39 @@ const ProfileNextTab = (props) => {
     const { id, fullName, emailID, userPhone, website, username } = apiTransfer;
 
     const [name, changeName] = useState("Follow")
-
     const [styleBtn, changeStyle] = useState("followbtnchange");
-    const [followIcon, followIconChange] = useState(<SlUserFollow style={{marginRight:"15px"}}/>)
+    const [followIcon, followIconChange] = useState(<SlUserFollow style={{marginRight:"15px"}}/>);
+    const [starBtn, changeStarBtn] = useState("")
     
     
     const followButton = useCallback(() => {
         if (name === "Follow") {
             changeName(() => "Unfollow");
-            changeStyle(() => "unFollowbtnchange")
-            followIconChange(()=><SlUserUnfollow style={{marginRight:"15px"}}/>)
+            changeStyle(() => "unFollowbtnchange");
+            followIconChange(()=><SlUserUnfollow style={{marginRight:"15px"}}/>);
+            changeStarBtn(()=><CiStar style={{marginLeft:"15px",height:"35px"}} />);
         }
 
         else {
             changeName(() => "Follow");
-            changeStyle(() => "followbtnchange")
-            followIconChange(()=><SlUserFollow style={{marginRight:"15px"}}/>)
+            changeStyle(() => "followbtnchange");
+            followIconChange(()=><SlUserFollow style={{marginRight:"15px"}}/>);
+            changeStarBtn(()=>"")
         }
     });
 
-    const deleteBtn = (id)=>{
-
+    const deleteBtn = ()=>{
+        props.handleDelete(id);
     }
+
     return (
-
-        // id: eachId.id,
-        // fullName: eachId.name,
-        // emailID: eachId.email,
-        // userPhone: eachId.phone,
-        // imageurl : eachId.image_url  //<img alt="NoImage" className="image_small" src={imageurl} /> /*   <Link to={`/item/${id}`}>//   </Link>
-
         <div className="d-flex flex-row justify-content-center">
 
             <div className="cardTable" id={id}>
                 <div className="d-flex flex-row justify-content-center">
                     <img style={{ marginTop: "5vh", width: "13vh", borderRadius: "100vh" }} alt="noImage" src={`https://api.dicebear.com/7.x/initials/svg?seed=${username}`} />
                 </div>
-                <h1 style={{ marginTop: "5vh", paddingLeft: "5vh", paddingBottom: "3vh", paddingRight: "5vh", textAlign: "center" }}>{fullName}</h1>
+                <h1 style={{ marginTop: "5vh", paddingLeft: "5vh", paddingBottom: "3vh", paddingRight: "5vh", textAlign: "center" }}>{fullName}{starBtn}</h1>
 
                 <p1 style={{ marginTop: "5vh", paddingLeft: "3vh",color:"#9c8daa" }}><MdAlternateEmail style={{ marginRight: "10px",color:"#9c8daa" }} />{emailID}</p1>
                 <br />
